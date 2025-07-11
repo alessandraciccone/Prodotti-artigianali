@@ -9,14 +9,15 @@ const productId = params.get("productId");
 if (productId) {
   fetch(`https://striveschool-api.herokuapp.com/api/product/${productId}`, {
     headers: {
-      Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+      Authorization:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODcwY2Q1MTc4Y2RkZjAwMTU1ZDY3ZDAiLCJpYXQiOjE3NTIyMjMwNTcsImV4cCI6MTc1MzQzMjY1N30.zOyWZpZDPihhX3zz-5-bg3JhIiAXIHWV7yiBZXQWuYo",
     },
   })
     .then((response) => {
       if (response.ok) {
         return response.json();
       } else {
-        throw new Error("❌ Errore nel recupero dei dettagli");
+        throw new Error(" Errore nel recupero dei dettagli");
       }
     })
     .then((productDetails) => {
@@ -32,8 +33,8 @@ if (productId) {
       document.querySelector(".card-img-top").alt = productDetails.name;
     })
     .catch((error) => {
-      console.error("❌ Errore:", error);
+      console.error(" Errore:", error);
     });
 } else {
-  console.error("⚠️ Nessun ID prodotto trovato nell’URL.");
+  console.error(" Nessun ID prodotto trovato nell’URL.");
 }
