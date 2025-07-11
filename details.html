@@ -10,7 +10,8 @@
       integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./assets/homepage.css" />
+
+    <link rel="stylesheet" href="./assets/details.css" />
   </head>
   <body class="d-flex flex-column vh-100 bg-dark">
     <header>
@@ -38,14 +39,16 @@
           >
             <ul class="navbar-nav d-flex gap-3">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link" aria-current="page" href="./homepage.html"
+                  >Home</a
+                >
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="./backoffice.html">Backoffice</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="./details.html">Details</a>
+                <a class="nav-link active" href="#">Details</a>
               </li>
             </ul>
             <form class="d-flex" role="search">
@@ -61,29 +64,28 @@
         </div>
       </nav>
       <!--fine nav-->
+
       <section class="text-center">
         <h1 class="mb-4">Local Food and Beverage</h1>
-        <h3 class="text-light">
-          I migliori prodotti del Lazio e dell'Abruzzo, acquistali da noi!
-        </h3>
+        <h2 class="text-light">Dettagli dei prodotti</h2>
       </section>
     </header>
     <main class="flex-grow-1">
-      <!--inizio div container-->
-      <div class="container">
-        <!--inizio div row-->
-        <div
-          class="row row-cols-1 row-cols-md-2 justify-content-center mt-5"
-          id="row-food"
-        >
-          <!--inizio div col-->
-
-          <div class="col"></div>
-          <!--fine div col-->
+      <div class="container mt-4">
+        <div class="row justify-content-center text-light">
+          <div class="col-md-6">
+            <div class="card bg-dark text-white">
+              <img src="" class="card-img-top" alt="" />
+              <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
         </div>
-        <!--fine div row-->
       </div>
-      <!--fine div container-->
+      <div id="spinner-container text-light">⏳ Caricamento...</div>
     </main>
     <hr />
     <footer class="text-center text-light">
@@ -94,6 +96,6 @@
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
       crossorigin="anonymous"
     ></script>
-    <script src="./script/homepage.js"></script>
+    <script src="./script/details.js"></script>
   </body>
 </html>

@@ -24,12 +24,16 @@ const products = function () {
         food.forEach((event) => {
           row.innerHTML += `
     <div class="col">
-      <div class="card h-100 d-flex flex-column gap-3 bg-dark text-white border border-1 border-white">
-        <img src="${event.imageUrl}" class="card-img-top" alt="${event.name}" />
+      <div class="card wh-50 d-flex flex-column gap-3 bg-dark text-white border border-1 border-white">
+        <img src="${event.imageUrl}" class="card-img-top mt-1 h-100 m-auto" alt="${event.name}" />
         <div class="card-body h-100 d-flex flex-column">
           <h5 class="card-title">${event.name}</h5>
           <p class="card-text flex-grow-1">${event.description}</p>
-          <a href="./detail.html?eventId=${event._id}" class="btn btn-warning">Vai ai dettagli</a>
+          <a href="./detail.html?eventId=${event._id}" class="btn btn-warning mb-2">Vai ai dettagli</a>
+          <button class="btn btn-danger" onclick="deleteProduct('${event._id}')">Elimina</button>
+        </div>
+      </div>
+
         </div>
       </div>
     </div>
@@ -44,6 +48,7 @@ const products = function () {
 };
 
 products();
+//funzioni per cancellare tre prodotti direttamente nell'array
 
 const deleteProduct = function (id) {
   fetch(`https://striveschool-api.herokuapp.com/api/product/${id}`, {
@@ -55,9 +60,9 @@ const deleteProduct = function (id) {
   })
     .then((response) => {
       if (response.ok) {
-        console.log("✅ Prodotto eliminato con successo");
+        console.log(" Prodotto eliminato con successo");
       } else {
-        console.error("❌ Errore nella cancellazione");
+        console.error(" Errore nella cancellazione");
       }
     })
     .catch((err) => console.error("Errore:", err));
@@ -65,7 +70,9 @@ const deleteProduct = function (id) {
 
 deleteProduct("6870ddcc78cddf00155d6850");
 
-const deleteProductWine = function (id) {
+//funzioni per eliminare i prodotti con il tasto elimina
+
+const deleteProductByBtn = function (id) {
   fetch(`https://striveschool-api.herokuapp.com/api/product/${id}`, {
     method: "DELETE",
     headers: {
@@ -73,42 +80,12 @@ const deleteProductWine = function (id) {
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODcwY2Q1MTc4Y2RkZjAwMTU1ZDY3ZDAiLCJpYXQiOjE3NTIyMjMwNTcsImV4cCI6MTc1MzQzMjY1N30.zOyWZpZDPihhX3zz-5-bg3JhIiAXIHWV7yiBZXQWuYo",
     },
   })
-    .then((response) => {
-      if (response.ok) {
-        console.log(" Prodotto eliminato con successo");
-        const cardToRemove = document.getElementById(`card-${id}`);
-        if (cardToRemove) {
-          cardToRemove.remove(); // Rimuove visivamente la card
-        }
+    .then((res) => {
+      if (res.ok) {
+        document.getElementById(`card-${id}`).remove();
       } else {
         console.error(" Errore nella cancellazione");
       }
     })
     .catch((err) => console.error("Errore:", err));
 };
-
-deleteProductWine("6870de2e78cddf00155d6853");
-
-const deleteProductBall = function (id) {
-  fetch(`https://striveschool-api.herokuapp.com/api/product/${id}`, {
-    method: "DELETE",
-    headers: {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODcwY2Q1MTc4Y2RkZjAwMTU1ZDY3ZDAiLCJpYXQiOjE3NTIyMjMwNTcsImV4cCI6MTc1MzQzMjY1N30.zOyWZpZDPihhX3zz-5-bg3JhIiAXIHWV7yiBZXQWuYo",
-    },
-  })
-    .then((response) => {
-      if (response.ok) {
-        console.log(" Prodotto eliminato con successo");
-        const cardToRemove = document.getElementById(`card-${id}`);
-        if (cardToRemove) {
-          cardToRemove.remove(); // Rimuove visivamente la card
-        }
-      } else {
-        console.error(" Errore nella cancellazione");
-      }
-    })
-    .catch((err) => console.error("Errore:", err));
-};
-
-deleteProductBall("6870e37478cddf00155d687d");
